@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Test Form</title>
+</head>
+<body>
+	<input type="radio" name="action" value="google" onclick="setAction(this)">Google
+	<br>
+	<input type="radio" name="action" value="game" onclick="setAction(this)">Game
+	<form action="" method="GET" target="_blank" id="form">
+		<input type="text" name="q">
+		<input type="text" name="username">
+		<input type="password" name="password">
+		<br>
+		<br>
+		<select name="enemy_color">​
+		    <option value="Red">red</option>​
+		    <option value="Green">green</option>​
+		    <option value="BLUE">blue</option>​
+		</select>
+		<input type="hidden" name="wallet" value="phil">
+		<br>
+		<button type="reset">Reset</button>
+		<button type="submit">Send my info to Google</button>
+	</form>
+	<script type="text/javascript">
+		function setAction (choice) {
+			var form = document.getElementById("form");
+			var protocol = window.location.protocol;
+			var host = window.location.host;
+			if (choice.value == "google") {
+				form.action = "https://www.google.com";
+			} else if (choice.value == "game") {
+				form.action = protocol + "//" + host + "/game";
+			}
+		}
+	</script>
+</body>
+</html>
