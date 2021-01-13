@@ -1,0 +1,22 @@
+img{
+    width: 100%;
+}
+
+#bar {
+	padding: 0;
+	width: 300px;
+	border: 1px solid black;
+	height: 30px;
+	margin: auto;
+}
+
+#health {
+	height: 100%;
+	background-color: green;
+	width: 100%;
+	margin: 0;
+}
+
+#time {
+	margin: 30px;
+}
