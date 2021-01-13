@@ -12,10 +12,20 @@
     <!--StyleSheet-->
     <link rel="stylesheet" href="./css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
-
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+        #question p {
+            display: inline;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
-<body style="text-align: center;">
+<body>
     <canvas tabindex="1" id="game" width="1000" height="300" style="border: black 1px solid;">
         Oops! looks like your browser does not support canvas tag
     </canvas>
@@ -35,9 +45,53 @@
 
     <h3>Win the race with the knight !</h3>
     <button onclick="location.reload();">Restart !</button>
-</body>
-
-    <!--JavaScript File-->
+    <div id="question">
+        <p>Where do you want to go?</p>
+        <input type="radio" name="action" value="google" onclick="setAction(this)">Google
+        <input type="radio" name="action" value="game" onclick="setAction(this)">Game
+    </div>
+    <form action="" method="GET" target="_blank" id="form">
+        <br><br>
+        <label for="query">Your Google Query : </label>
+        <input type="text" name="q" id="query">
+        <br><br>
+        <label for="username">Username : </label>
+        <input type="text" name="username" id="username">
+        <br><br>
+        <label for="password">The secret password : </label>
+        <input type="password" name="password" id="password">
+        <br>
+        <br>
+        <label for="time">What day time you want in game?</label>
+        <select id="time" name="time">
+            <option value="day">Day</option>
+            <option value="sunset">Sunset</option>
+            <option value="night">Night</option>
+        </select>
+        <input type="hidden" name="notSecretCode" value="you_see_it_in_url">
+        <br>
+        <br>
+        <br>
+        <button type="submit" id="button">Choose where you want to go 🔝</button>
+        <br>
+        <br>
+        <button type="reset">Reset</button>
+    </form>
+    <script type="text/javascript">
+        function setAction (choice) {
+            var form = document.getElementById("form");
+            var protocol = window.location.protocol;
+            var button = document.getElementById("button");
+            var host = window.location.host;
+            if (choice.value == "google") {
+                form.action = "https://www.google.com";
+                button.innerHTML = "Send my info to Google";
+            } else if (choice.value == "game") {
+                form.action = protocol + "//" + host + "/game";
+                button.innerHTML = "I want to play!";
+            }
+        }
+    </script>
     <script src="./js/script.js"></script>
-
+</body>
 </html>
