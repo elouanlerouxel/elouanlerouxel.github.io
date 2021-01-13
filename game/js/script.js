@@ -201,6 +201,22 @@ npcImg.src = "img/dino.png";
 var bgImg = new Image();
 bgImg.src = "img/bg.png";
 
+var urlParam = new URLSearchParams(window.location.search);
+
+if (urlParam.has("time")) {
+    switch (urlParam.get("time")) {
+        case "day":
+            bgImg.src = "img/bg.png";
+            break;
+        case "sunset":
+            bgImg.src = "img/bgSunset.png";
+            break;
+        case "night":
+            bgImg.src = "img/bgNight.png";
+            break;
+    }
+}
+
 var lineImg = new Image();
 lineImg.src = "img/line.png";
 
