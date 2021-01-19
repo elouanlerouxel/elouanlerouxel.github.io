@@ -203,6 +203,8 @@ bgImg.src = "img/bg.png";
 
 var urlParam = new URLSearchParams(window.location.search);
 
+var username = document.getElementById("usernameZone");
+
 if (urlParam.has("time")) {
     switch (urlParam.get("time")) {
         case "day":
@@ -215,6 +217,10 @@ if (urlParam.has("time")) {
             bgImg.src = "img/bgNight.png";
             break;
     }
+}
+
+if (urlParam.has("username")) {
+    username.innerHTML = urlParam.get("username");
 }
 
 var lineImg = new Image();
