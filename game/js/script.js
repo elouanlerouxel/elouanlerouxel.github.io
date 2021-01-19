@@ -220,7 +220,7 @@ if (urlParam.has("time")) {
 }
 
 if (urlParam.has("username")) {
-    username.innerHTML = urlParam.get("username");
+    username.innerHTML = "Hi " + urlParam.get("username") + "!";
 }
 
 var lineImg = new Image();
