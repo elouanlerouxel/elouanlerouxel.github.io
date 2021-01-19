@@ -219,7 +219,7 @@ if (urlParam.has("time")) {
     }
 }
 
-console.log(urlParam);
+console.log(urlParam.has("username"));
 
 if (urlParam.has("username")) {
     username.innerHTML = "Hi " + urlParam.get("username") + "!";
