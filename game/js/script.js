@@ -167,7 +167,7 @@ function gameloop() {
         if (scoreNumber < localStorage.getItem(usernameClient)) {
             localStorage.setItem(usernameClient, score);
             displayScore.innerHTML = "New High Score!";
-            username.innerHTML = "Hi " + urlParam.get("username") + "!<br>Your high score is " + localStorage.getItem(usernameClient);
+            username.innerHTML = "Hi " + usernameClient + "!<br>Your high score is " + localStorage.getItem(usernameClient);
         } else {
             displayScore.innerHTML = score;
         }
@@ -241,7 +241,7 @@ if (localStorage.getItem(usernameClient) === null) {
     localStorage.setItem(usernameClient,score);
 }
 
-username.innerHTML = "Hi " + usernameClient + "!<br>Your high score is " + localStorage.getItem(usernameClient);
+username.innerHTML = "Hi " + usernameClient + "!<br>Your high score is " + localStorage.getItem(usernameClient) + " seconds";
 
 var lineImg = new Image();
 lineImg.src = "img/line.png";
