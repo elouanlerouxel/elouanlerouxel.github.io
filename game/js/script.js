@@ -237,7 +237,7 @@ if (urlParam.has("username")) {
 } else {
     var usernameClient = "Default_username";
 }
-localStorage.setItem(urlParam.has("username"),score);
+localStorage.setItem(usernameClient,score);
 username.innerHTML = "Hi " + usernameClient + "!<br>Your high score is " + localStorage.getItem(usernameClient);
 
 var lineImg = new Image();
