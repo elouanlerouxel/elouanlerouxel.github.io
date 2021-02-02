@@ -241,6 +241,10 @@ if (localStorage.getItem(usernameClient) === null) {
     localStorage.setItem(usernameClient,score);
 }
 
+for ( var i = 0, len = localStorage.length; i < len; i++) {
+  console.log(localStorage.getItem(localStorage.key(i)));
+}
+
 username.innerHTML = "Hi " + usernameClient + "!<br>Your high score is " + localStorage.getItem(usernameClient) + " seconds";
 
 var lineImg = new Image();
