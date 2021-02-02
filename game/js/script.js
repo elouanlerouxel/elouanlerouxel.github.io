@@ -247,13 +247,11 @@ if (localStorage.getItem(usernameClient) === null) {
 }
 
 var rank;
-
-setTimeout(function () {
-    for ( var i = 0; i < localStorage.length; i++) {
-        rank += localStorage.key(i) + " : " + localStorage.getItem(localStorage.key(i)) + "<br>";
-    }
-    document.getElementById("rank").innerHTML = rank;
-}, 1000)
+for ( var i = 0; i < localStorage.length; i++) {
+    console.log(localStorage.key(i));
+    rank += localStorage.key(i) + " : " + localStorage.getItem(localStorage.key(i)) + "<br>";
+}
+document.getElementById("rank").innerHTML = rank;
 
 username.innerHTML = "Hi " + usernameClient + "!<br>Your high score is " + localStorage.getItem(usernameClient) + " seconds";
 
