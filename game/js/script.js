@@ -122,7 +122,6 @@ function update() {
 
             if (gameobjects[i].health < 30) {
                 context.fillStyle = "red";
-                healthBar.style.backgroundColor = "red";
             }
         }
 
@@ -139,7 +138,6 @@ function draw() {
     context.clearRect(0,0,800,800);
     context.drawImage(bgImg,0,0,1000,300);
     context.fillRect(player.y+147, player.x+10, player.health, 13);
-    healthBar.style.width = player.health + "%";
     context.strokeRect(player.y+147, player.x+10, 100, 13);
     context.drawImage(lineImg,700,65,268,268);
 
@@ -162,6 +160,17 @@ function gameloop() {
     if (loser.length === 2) {
         context.drawImage(loserImg, loser[0].y, loser[0].x, 300,150);
         context.drawImage(winnerImg, winner[0].y, winner[0].x, 300,150);
+        if (winner[0].name == "Player") {
+            scoreNumber = (Date.now() - startDate) / 1000;
+        }
+        score = scoreNumber.toFixed(3);
+        if (scoreNumber < localStorage.getItem(usernameClient)) {
+            localStorage.setItem(usernameClient, score);
+            .innerHTML = "New High Score!";
+            username.innerHTML = "Hi " + urlParam.get("username") + "!<br>Your high score is " + localStorage.getItem(usernameClient);
+        } else {
+            .innerHTML = score;
+        }
         return;
     }
 
@@ -219,9 +228,16 @@ if (urlParam.has("time")) {
     }
 }
 
+var startDate = Date.now();
+var scoreNumber = 15.000;
+var score = scoreNumber.toFixed(3);
 if (urlParam.has("username")) {
-    username.innerHTML = "Hi " + urlParam.get("username") + "!";
+    var usernameClient = urlParam.get("username");
+} else {
+    var usernameClient = "Default_username";
 }
+localStorage.setItem(urlParam.has("username"),score);
+username.innerHTML = "Hi " + usernameClient + "!<br>Your high score is " + localStorage.getItem(usernameClient);
 
 var lineImg = new Image();
 lineImg.src = "img/line.png";
@@ -237,16 +253,9 @@ var winnerImg = new Image();
 winnerImg.src = "img/winner.png";
 console.log(winnerImg);
 
-var healthBar = document.getElementById("health");
-
 var loser;
 
-var dayTime = document.getElementById("time");
-
 var winner;
-
-dayTime.addEventListener("change", updateBg);
-
 
 // Default Player
 var player = new GameObject("Player", playerImg, 100, 8, 3072, 173, 173, -100, false);
