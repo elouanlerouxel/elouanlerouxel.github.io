@@ -168,6 +168,7 @@ function gameloop() {
             localStorage.setItem(usernameClient, score);
             displayScore.innerHTML = "New High Score!";
             username.innerHTML = "Hi " + usernameClient + "!<br>Your high score is " + localStorage.getItem(usernameClient);
+            rank = "";
             for ( var i = 0; i < localStorage.length; i++) {
                 rank += localStorage.key(i) + " : " + localStorage.getItem(localStorage.key(i)) + "<br>";
             }
@@ -244,11 +245,15 @@ if (urlParam.has("username")) {
 if (localStorage.getItem(usernameClient) === null) {
     localStorage.setItem(usernameClient,score);
 }
+
 var rank;
-for ( var i = 0; i < localStorage.length; i++) {
-    rank += localStorage.key(i) + " : " + localStorage.getItem(localStorage.key(i)) + "<br>";
-}
-document.getElementById("rank").innerHTML = rank;
+
+setTimeout(function () {
+    for ( var i = 0; i < localStorage.length; i++) {
+        rank += localStorage.key(i) + " : " + localStorage.getItem(localStorage.key(i)) + "<br>";
+    }
+    document.getElementById("rank").innerHTML = rank;
+}, 1000)
 
 username.innerHTML = "Hi " + usernameClient + "!<br>Your high score is " + localStorage.getItem(usernameClient) + " seconds";
 
