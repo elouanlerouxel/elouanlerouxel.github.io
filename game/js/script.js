@@ -166,10 +166,10 @@ function gameloop() {
         score = scoreNumber.toFixed(3);
         if (scoreNumber < localStorage.getItem(usernameClient)) {
             localStorage.setItem(usernameClient, score);
-            .innerHTML = "New High Score!";
+            displayScore.innerHTML = "New High Score!";
             username.innerHTML = "Hi " + urlParam.get("username") + "!<br>Your high score is " + localStorage.getItem(usernameClient);
         } else {
-            .innerHTML = score;
+            displayScore.innerHTML = score;
         }
         return;
     }
@@ -231,6 +231,7 @@ if (urlParam.has("time")) {
 var startDate = Date.now();
 var scoreNumber = 15.000;
 var score = scoreNumber.toFixed(3);
+var displayScore = document.getElementById("score");
 if (urlParam.has("username")) {
     var usernameClient = urlParam.get("username");
 } else {
