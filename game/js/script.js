@@ -278,7 +278,8 @@ var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         data = JSON.parse(this.responseText);
-        console.log(data);
+        npcSpeed = data.npcSpeed;
+        yObstacle = data.yObstacle;
     } else {
         npcSpeed = 10;
         yObstacle = 375;
@@ -286,9 +287,6 @@ xmlhttp.onreadystatechange = function () {
 };
 xmlhttp.open("GET", "level.json", true);
 xmlhttp.send();
-
-npcSpeed = 10;
-yObstacle = 375;
 
 // Default Player
 var player = new GameObject("Player", playerImg, 100, 8, 3072, 173, 173, -100, false);
