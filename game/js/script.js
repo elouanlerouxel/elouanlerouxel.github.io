@@ -76,11 +76,11 @@ function update() {
 
         //Conditions to make the NPC jump over the plank
 
-        if (gameobjects[i].auto && gameobjects[i].move && (gameobjects[i].y < 250 || gameobjects[i].y > 350 || gameobjects[i].x < 15)) {gameobjects[i].y+=10;}
+        if (gameobjects[i].auto && gameobjects[i].move && (gameobjects[i].y < yObstacle-125 || gameobjects[i].y > yObstacle-25 || gameobjects[i].x < 15)) {gameobjects[i].y+=npcSpeed;}
 
-        if (gameobjects[i].auto && gameobjects[i].move && (gameobjects[i].y > 230 && gameobjects[i].y < 333 && gameobjects[i].x > 21)) {gameobjects[i].x-=10;}
+        if (gameobjects[i].auto && gameobjects[i].move && (gameobjects[i].y > yObstacle-145 && gameobjects[i].y < yObstacle-42 && gameobjects[i].x > 21)) {gameobjects[i].x-=npcSpeed;}
 
-        if (gameobjects[i].auto && gameobjects[i].move && (gameobjects[i].y > 375 && gameobjects[i].x < 300-gameobjects[i].height)) {gameobjects[i].x+=10;}
+        if (gameobjects[i].auto && gameobjects[i].move && (gameobjects[i].y > yObstacle && gameobjects[i].x < 300-gameobjects[i].height)) {gameobjects[i].x+=npcSpeed;}
 
         //Test if the NPC win
 
@@ -92,11 +92,11 @@ function update() {
         }
 
         if (gameobjects[i].name=="Player" && gameobjects[i].move) {
-            if (gamerInput.right && (gameobjects[i].y < 180 || gameobjects[i].y > 300 || gameobjects[i].x < 0)) {
+            if (gamerInput.right && (gameobjects[i].y < yObstacle-195 || gameobjects[i].y > yObstacle-75 || gameobjects[i].x < 0)) {
                 gameobjects[i].y += 15;
             }
 
-            if (gamerInput.left && (gameobjects[i].y > 315 || gameobjects[i].y < 195 || gameobjects[i].x < 0)) {
+            if (gamerInput.left && (gameobjects[i].y > yObstacle-60 || gameobjects[i].y < yObstacle-180 || gameobjects[i].x < 0)) {
                 gameobjects[i].y -= 15;
             }
 
@@ -104,7 +104,7 @@ function update() {
                 gameobjects[i].x -= 15;
             }
 
-            if (gamerInput.down && gameobjects[i].x < 150 && (gameobjects[i].y > 300 || gameobjects[i].y < 195)) {
+            if (gamerInput.down && gameobjects[i].x < 150 && (gameobjects[i].y > yObstacle-75 || gameobjects[i].y < yObstacle-180)) {
                 gameobjects[i].x += 15;
             }
 
@@ -115,7 +115,7 @@ function update() {
                 gameobjects.filter(obj => {return obj.name == "NPC"})[0].win = false;
             }
 
-            if (gameobjects[i].y > 170 && gameobjects[i].y < 195 && gameobjects[i].x > 0 && gameobjects[i].health>3) {
+            if (gameobjects[i].y > yObstacle-205 && gameobjects[i].y < yObstacle-180 && gameobjects[i].x > 0 && gameobjects[i].health>3) {
                 gameobjects[i].health-=3;
             }
             
@@ -272,11 +272,29 @@ var loser;
 
 var winner;
 
+var npcSpeed, yObstacle, data;
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+        data = JSON.parse(this.responseText);
+        console.log(data);
+    } else {
+        npcSpeed = 10;
+        yObstacle = 375;
+    }
+};
+xmlhttp.open("GET", "../level.json", true);
+xmlhttp.send();
+
+npcSpeed = 10;
+yObstacle = 375;
+
 // Default Player
 var player = new GameObject("Player", playerImg, 100, 8, 3072, 173, 173, -100, false);
 
 // Gameobjects is a collection of the Actors within the game
-var gameobjects = [player, new GameObject("NPC", npcImg, 100, 5, 720, 108, 108, -200, true), new GameObject("Obstacle", plankImg, 100, 13, 1664, 128, 142, 375, false)];
+var gameobjects = [player, new GameObject("NPC", npcImg, 100, 5, 720, 108, 108, -200, true), new GameObject("Obstacle", plankImg, 100, 13, 1664, 128, 142, yObstacle, false)];
 
 var time;
 var precTime = new Date().getTime();
