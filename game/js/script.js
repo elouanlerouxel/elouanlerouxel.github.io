@@ -284,7 +284,7 @@ xmlhttp.onreadystatechange = function () {
         yObstacle = 375;
     }
 };
-xmlhttp.open("GET", "../level.json", true);
+xmlhttp.open("GET", "level.json", true);
 xmlhttp.send();
 
 npcSpeed = 10;
