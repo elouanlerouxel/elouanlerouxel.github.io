@@ -294,7 +294,6 @@ xmlhttp.send();
 var player = new GameObject("Player", playerImg, 100, 8, 3072, 173, 173, -100, false);
 
 // Gameobjects is a collection of the Actors within the game
-console.log(yObstacle);
 var gameobjects = [player, new GameObject("NPC", npcImg, 100, 5, 720, 108, 108, -200, true), new GameObject("Obstacle", plankImg, 100, 13, 1664, 128, 142, yObstacle, false)];
 
 var time;
