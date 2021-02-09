@@ -278,9 +278,11 @@ var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         data = JSON.parse(this.responseText);
+        console.log(data);
         npcSpeed = data.npcSpeed;
         yObstacle = data.yObstacle;
     } else {
+        //Default value if we can't get JSON
         npcSpeed = 10;
         yObstacle = 375;
     }
