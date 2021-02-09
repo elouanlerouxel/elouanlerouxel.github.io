@@ -145,7 +145,7 @@ function draw() {
         if (gameobjects[i].currentFrame >= gameobjects[i].maxFrame) {gameobjects[i].currentFrame=0;}
 
         context.drawImage(gameobjects[i].img, gameobjects[i].width*gameobjects[i].currentFrame, 0, gameobjects[i].width, gameobjects[i].height, gameobjects[i].y, gameobjects[i].x, gameobjects[i].width, gameobjects[i].height);
-
+        console.log(gameobjects[i].y);
         gameobjects[i].currentFrame++;
     }
     precTime = time;
