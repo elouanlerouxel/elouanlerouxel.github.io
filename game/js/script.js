@@ -262,11 +262,9 @@ plankImg.src = "img/plank.png";
 
 var loserImg = new Image();
 loserImg.src = "img/loser.png";
-console.log(loserImg);
 
 var winnerImg = new Image();
 winnerImg.src = "img/winner.png";
-console.log(winnerImg);
 
 var loser;
 
