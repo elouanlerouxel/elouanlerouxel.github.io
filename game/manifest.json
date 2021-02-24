@@ -1,0 +1,22 @@
+{
+    "name": "Elouan, the best PWA",
+    "short_name": "Elouan PWA",
+
+    "icons": [{
+        "src": "img/icons/icon.png",
+        "sizes": "322x322",
+        "type": "image/png"
+    }, {
+        "src": "img/icons/maskable_icon.png",
+        "sizes": "322x322",
+        "type": "image/png",
+        "purpose": "any maskable"
+    }],
+
+    "theme_color": "#ffffff",
+    "background_color": "#000000",
+    "display": "minimal-ui",
+    "orientation": "landscape",
+    "scope": "/",
+    "start_url": "/index.html"
+}
