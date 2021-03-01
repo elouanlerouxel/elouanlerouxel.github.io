@@ -20,3 +20,9 @@ img{
 #time {
 	margin: 30px;
 }
+
+@media only screen and (max-width: 1003px) {
+	canvas {
+		transform: rotate(90deg);
+	}
+}
