@@ -1,0 +1,41 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	outline: none;
+}
+
+body {
+	text-align: center;
+}
+
+.button {
+	border: 3px solid white;
+	border-radius: 15px;
+	cursor: pointer;
+	background-color: #bebebe;
+}
+
+.button img {
+	width: 75px;
+}
+
+.selected {
+	border: 3px solid black;
+	border-radius: 15px;
+}
+
+#start {
+	cursor: pointer;
+}
+
+#start img {
+	width: 150px;
+}
+
+section {
+	display: flex;
+	justify-content: space-evenly;
+	width: 80vw;
+	margin: auto;
+}
