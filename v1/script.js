@@ -1,4 +1,4 @@
-let canvas,screen, time, precTime, buttons, selected, start, smallImg, bigImg, smallTxt, bigTxt;
+let canvas,screen, time, precTime, buttons, selected, start, startImg, smallImg, bigImg, smallTxt, bigTxt;
 
 let boats = new Image();
 boats.src = "img/boats.png";
@@ -67,6 +67,9 @@ function select () {
 function round () {
 	let botChoice = attacks[Math.floor(Math.random() * Math.floor(3))];
 	let playerChoice = selected;
+
+	startImg.src = "img/buttonPushed.png";
+	start.removeEventListener("click", round);
 
 	console.log("Bot : "+botChoice);
 	console.log("Player : "+playerChoice);
@@ -151,6 +154,13 @@ function round () {
 		start.removeEventListener("click", round);
 	}
 
+	setTimeout(function () {
+		if (playerHealth > 0 && botHealth > 0) {
+			start.addEventListener("click", round);
+			startImg.src = "img/button.png";
+		}
+	}, 1500);
+
 }
 
 window.addEventListener("DOMContentLoaded", main);
@@ -164,6 +174,7 @@ function main () {
 		button.addEventListener("click", select);
 	}
 
+	startImg = document.getElementById("startImg");
 	start = document.getElementById("start");
 	start.addEventListener("click", round)
 
