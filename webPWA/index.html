@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>boat WAR</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/png" href="img/icon.png">
+
+    <link rel="apple-touch-icon" href="img/icon.png">
+    <meta name="theme-color" content="#D1D8D8" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Boat WAR">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-title" content="Boat WAR">
+
+    <meta name="msapplication-TileImage" content="img/icon.png">
+    <meta name="msapplication-TileColor" content="#D1D8D8">
+
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="shortcut icon" href="img/icon.png" type="image/png">
+</head>
+<body>
+    <div id="alert">
+        <p id="alertText"></p>
+    </div>
+	<canvas id="game" width="1100" height="499">
+        Oops! looks like your browser does not support canvas tag
+    </canvas>
+    <div id="background">
+        <div id="modal">
+            <form>
+                <div id="usernameZone">
+                    <label for="username">Your username:</label>
+                    <input id="username" type="text" name="username">
+                </div>
+                <div id="weatherZone">
+                    <label for="weather">Weather in-game:</label>
+                    <select name="weather" id="weather">
+                        <option value="day">Day</option>
+                        <option value="sunset">Sunset</option>
+                        <option value="night">Night</option>
+                    </select>
+                </div>
+                <div id="alertZone" style="display: none;">
+                    <p>Your username should be at least 3 letters</p>
+                </div>
+                <img src="img/play.png" alt="Submit" id="send" width="100" height="100" style="cursor: pointer;">
+            </form>
+            <div><img src="img/tutoAmmo.png" alt="Ammo button"><p>Switch to select ammo before next round</p></div>
+            <div><img src="img/tutoScreen.png" alt="Ammo button"><p>Number of ammo of this category before reload</p></div>
+            <div><img src="img/tutoReload.png" alt="Ammo button"><p>Reload this type of ammo during next round</p></div>
+            <div><img src="img/tutoStart.png" alt="Ammo button"><p>Start the next round with the selected ammo</p></div>
+        </div>
+        <img src="img/backgroundSea.png" alt="Sea background">
+    </div>
+    <img src="img/restart.png" alt="Restart" id="restart" width="150" height="150" style="cursor: pointer;display: none;margin: auto;">
+    <section>
+    	<div class="button" id="small"><img id="smallImg" src="img/small.png"><p id="smallStock">3</p></div>
+    	<div class="button" id="big"><img id="bigImg" src="img/big.png"><p id="bigStock">1</p></div>
+    	<div class="button" id="shield"><img src="img/shield.png"><p>∞</p></div>
+        <div id="start"><img id="startImg" src="img/button.png"></div>
+    </section>
+    <div id="rank">
+    </div>
+    <script src="./js/script.js"></script>
+    <script src="register.js"></script>
+    <script src="service_worker.js"></script>
+</body>
+</html>
