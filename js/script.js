@@ -63,8 +63,14 @@ let reloadBigBot = new Image();
 reloadBigBot.src = "img/reloadBigBot.png";
 let reloadBigBotAnim = new Animation(reloadBigBot, 21);
 
+let healthBarPlayer = new Image();
+healthBarPlayer.src = "img/healthBarPlayer.png";
+
 let sea = new Image();
 sea.src = "img/sea.png";
+
+let healthBarBot = new Image();
+healthBarBot.src = "img/healthBarBot.png";
 
 let seaAnim = new Animation(sea, 7);
 let defaultAnimations = [seaAnim];
@@ -119,12 +125,15 @@ function gameloop () {
 }
 
 function draw () {
+	
 	screen.clearRect(0,0,1100,500);
 	screen.drawImage(background, 50, 0, 1000, 500);
-	screen.fillStyle = "#169b62";
-	screen.fillRect(0,500,50,-playerHealth/4.5);
-	screen.fillStyle = "#3379ec";
-	screen.fillRect(1050,500,50,-botHealth/4.5);
+	screen.fillStyle = "#052216";
+	screen.fillRect(0,0,50,500);
+	screen.fillStyle = "#09162a";
+	screen.fillRect(1050,0,50,500);
+	screen.drawImage(healthBarBot, 0, ((2500-botHealth)/5), 50, 500, 1050, ((2500-botHealth)/5), 50, 500);
+	screen.drawImage(healthBarPlayer, 0, ((2500-playerHealth)/5), 50, 500, 0, ((2500-playerHealth)/5), 50, 500);
 	screen.drawImage(boats, 50, 0, 1000, 500);
 	screen.drawImage(life, 0, 450, 50, 50);
 	screen.drawImage(life, 1050, 450, 50, 50);
@@ -446,10 +455,12 @@ function main () {
 				/*screen.fillStyle = "#87ceeb";
 				screen.fillRect(50,0,1000,500);*/
 				screen.drawImage(background, 50, 0, 1000, 500);
-				screen.fillStyle = "#169b62";
-				screen.fillRect(0,0,50,playerHealth/4.5);
-				screen.fillStyle = "#3379ec";
-				screen.fillRect(1050,0,50,botHealth/4.5);
+				screen.fillStyle = "#052216";
+				screen.fillRect(0,0,50,500);
+				screen.fillStyle = "#09162a";
+				screen.fillRect(1050,0,50,500);
+				screen.drawImage(healthBarBot, 0, ((2500-botHealth)/5), 50, 500, 1050, ((2500-botHealth)/5), 50, 500);
+				screen.drawImage(healthBarPlayer, 0, ((2500-playerHealth)/5), 50, 500, 0, ((2500-playerHealth)/5), 50, 500);
 				screen.drawImage(boats, 50, 0, 1000, 500);
 				screen.drawImage(life, 0, 450, 50, 50);
 				screen.drawImage(life, 1050, 450, 50, 50);

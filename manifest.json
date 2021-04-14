@@ -16,6 +16,6 @@
     "theme_color": "#00d800",
     "background_color": "#D1D8D8",
     "display": "minimal-ui",
-    "scope": "/boatWAR",
-    "start_url": "/boatWAR/index.html"
+    "scope": "/",
+    "start_url": "/index.html"
 }
