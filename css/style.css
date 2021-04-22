@@ -25,6 +25,10 @@ canvas {
 	margin: 30px auto 15px auto;
 }
 
+audio {
+	display: none;
+}
+
 #send {
 	display: block;
 	margin: auto;

@@ -72,6 +72,20 @@ sea.src = "img/sea.png";
 let healthBarBot = new Image();
 healthBarBot.src = "img/healthBarBot.png";
 
+let buttonSound = document.getElementById("buttonSound");
+let seaSound = document.getElementById("seaSound");
+let bigSound = document.getElementById("bigSound");
+let smallSound = document.getElementById("smallSound");
+let shieldSound = document.getElementById("shieldSound");
+let shieldExplosionSound = document.getElementById("shieldExplosionSound");
+let reloadSound = document.getElementById("reloadSound");
+let loseSound = document.getElementById("loseSound");
+let winSound = document.getElementById("winSound");
+let peaceSound = document.getElementById("peaceSound");
+let errorSound = document.getElementById("errorSound");
+seaSound.loop = true;
+seaSound.volume = 0.3;
+
 let seaAnim = new Animation(sea, 7);
 let defaultAnimations = [seaAnim];
 let animations = [];
@@ -98,6 +112,7 @@ function Animation (img, maxFrame) {
 
 function reset () {
 	restart.src = "img/restartPushed.png";
+	buttonSound.play();
 	setTimeout(function () {
 		restart.style.display = "none";
 		restart.src = "img/restart.png";
@@ -174,6 +189,7 @@ function draw () {
 }
 
 function select () {
+	buttonSound.play();
 	for (const button of buttons) {
 		if (button == this) {
 			if (button.id == "small" && playerStock.small == 0) {
@@ -200,6 +216,8 @@ function select () {
 
 function round () {
 
+	buttonSound.play();
+
 	startImg.src = "img/buttonPushed.png";
 	start.removeEventListener("click", round);
 
@@ -213,17 +231,21 @@ function round () {
 		if (botChoice == "small") {
 			if (botStock.small == 0) {
 				botStock.small = 3;
+				reloadSound.play();
 				animations.push(reloadSmallBotAnim);
 				if (playerChoice == "shield") {
+					shieldSound.play();
 					animations.push(shieldPlayerAnim);
 				}
 			} else {
 				botStock.small--;
 				if (playerChoice != "shield") {
 					playerHealth -= smallDamages;
+					smallSound.play();
 					animations.push(smallBotAnim);
 				} else {
 					playerHealth -= smallDamages - shieldProtection;
+					shieldExplosionSound.play();
 					animations.push(shieldSmallBotAnim);
 				}
 			}
@@ -232,17 +254,21 @@ function round () {
 		if (botChoice == "big") {
 			if (botStock.big == 0) {
 				botStock.big = 1;
+				reloadSound.play();
 				animations.push(reloadBigBotAnim);
 				if (playerChoice == "shield") {
+					shieldSound.play();
 					animations.push(shieldPlayerAnim);
 				}
 			} else {
 				botStock.big--;
 				if (playerChoice != "shield") {
 					playerHealth -= bigDamages;
+					bigSound.play();
 					animations.push(bigBotAnim);
 				} else {
 					playerHealth -= bigDamages - shieldProtection;
+					shieldExplosionSound.play();
 					animations.push(shieldBigBotAnim);
 				}
 			}
@@ -253,17 +279,21 @@ function round () {
 			if (playerStock.small == 0) {
 				playerStock.small = 3;
 				smallImg.src = "img/small.png";
+				reloadSound.play();
 				animations.push(reloadSmallPlayerAnim);
 				if (botChoice == "shield") {
+					shieldSound.play();
 					animations.push(shieldBotAnim);
 				}
 			} else {
 				playerStock.small--;
 				if (botChoice != "shield") {
 					botHealth -= smallDamages;
+					smallSound.play();
 					animations.push(smallPlayerAnim);
 				} else {
 					botHealth -= smallDamages - shieldProtection;
+					shieldExplosionSound.play();
 					animations.push(shieldSmallPlayerAnim);
 				}
 			}
@@ -274,18 +304,21 @@ function round () {
 			if (playerStock.big == 0) {
 				playerStock.big = 1;
 				bigImg.src = "img/big.png";
+				reloadSound.play();
 				animations.push(reloadBigPlayerAnim);
-				console.log(animations);
 				if (botChoice == "shield") {
+					shieldSound.play();
 					animations.push(shieldBotAnim);
 				}
 			} else {
 				playerStock.big--;
 				if (botChoice != "shield") {
 					botHealth -= bigDamages;
+					bigSound.play();
 					animations.push(bigPlayerAnim);
 				} else {
 					botHealth -= bigDamages - shieldProtection;
+					shieldExplosionSound.play();
 					animations.push(shieldBigPlayerAnim);
 				}
 			}
@@ -293,11 +326,13 @@ function round () {
 		}
 
 		if (botChoice == "shield" && playerChoice == "shield") {
+			shieldSound.play();
 			animations.push(shieldBotAnim);
 			animations.push(shieldPlayerAnim);
 		}
 
 	} else {
+		errorSound.play();
 		alertText.innerHTML = "Select an attack";
 	}
 
@@ -330,18 +365,21 @@ function round () {
 		startImg.src = "img/button.png";
 		alertText.innerHTML = "";
 		if (playerHealth <= 0 && botHealth <= 0) {
+			peaceSound.play();
 			alertText.innerHTML = "That's peace <3";
 			restart.style.display = "block";
 			restart.addEventListener("click",reset);
 			start.parentElement.style.display = "none";
 			start.removeEventListener("click", round);
 		} else if (playerHealth <= 0) {
+			loseSound.play();
 			alertText.innerHTML = "Oups! You lose";
 			restart.style.display = "block";
 			restart.addEventListener("click",reset);
 			start.parentElement.style.display = "none";
 			start.removeEventListener("click", round);
 		} else if (botHealth <= 0) {
+			winSound.play();
 			alertText.innerHTML = "Good job! You win in "+steps+" rounds";
 			if (localStorage.getItem(username) === null) {
 				score = steps;
@@ -431,6 +469,8 @@ function main () {
 	memory = [];
 
 	play.addEventListener("click", function () {
+		buttonSound.play();
+		seaSound.play();
 		play.src = "img/playPushed.png";
 		setTimeout(function () {
 			play.src = "img/play.png";
