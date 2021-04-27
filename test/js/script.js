@@ -110,7 +110,7 @@ scoreRequest.responseType = 'json';
 scoreRequest.send();
 scoreRequest.onload = function() {
   scoreOnline = scoreRequest.response;
-  console.log(scoreOnline);
+  console.log(scoreOnline["Elouan"]);
 }
 
 function Animation (img, maxFrame) {
