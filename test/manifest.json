@@ -1,0 +1,21 @@
+{
+    "name": "boat WAR",
+    "short_name": "BW",
+
+    "icons": [{
+        "src": "img/icon.png",
+        "sizes": "600x600",
+        "type": "image/png"
+    }, {
+        "src": "img/icon.png",
+        "sizes": "600x600",
+        "type": "image/png",
+        "purpose": "any maskable"
+    }],
+
+    "theme_color": "#00d800",
+    "background_color": "#D1D8D8",
+    "display": "minimal-ui",
+    "scope": "/",
+    "start_url": "/index.html"
+}
